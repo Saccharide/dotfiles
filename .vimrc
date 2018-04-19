@@ -65,6 +65,7 @@ set nofoldenable
 set foldlevel=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" WARNING: DON'T DO THIS IF YOU LIKE HOW IT IS NOW
 " Remap j to k
 nnoremap j k
 nnoremap k j
