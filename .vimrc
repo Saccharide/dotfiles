@@ -1,24 +1,29 @@
 
+
+execute pathogen#infect()
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " @title            .vimrc
 " @description      Personal vimrc file
 " @author           sachharide
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set number
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set relative and absolute number
+set number rnu 
+
 set background=dark
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs
 set ts=4 sw=4 sts=4 et
 set expandtab
-
-
+syntax on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent configs
 set autoindent
 set breakindent
 set cindent
-filetype indent on
+" filetype indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader configs
@@ -31,8 +36,13 @@ noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 set showmatch
 set cursorline
 set hlsearch
-hi CursorLine   cterm=NONE ctermbg=8 ctermfg=NONE
 
+" Fixed the value of ctermbg, xterm256color take a 3 digit value
+hi CursorLine cterm=NONE ctermbg=238 ctermfg=NONE
+
+" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
+
+highlight Normal ctermbg=black
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto complete brackets 
@@ -55,7 +65,9 @@ augroup END
 " The screen would always center on the current word
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
+nmap     G Gzz
+nmap     } }zz
+nmap     } {zz
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding
@@ -75,3 +87,25 @@ highlight Comment cterm=italic
 " Maybe this is not a good idea, but it seems more inutive
 " nnoremap j k
 " nnoremap k j
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mapping <ctrl> h,j,k,l to move between panels
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TRAINING 
+no <up> <Nop> 
+no <down> <Nop> 
+no <left> <Nop> 
+no <right> <Nop> 
+
+ino <up> <Nop> 
+ino <down> <Nop> 
+ino <left> <Nop> 
+ino <right> <Nop> 
+
