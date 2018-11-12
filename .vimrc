@@ -10,6 +10,7 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 set nocompatible
 set background=dark
 set title
+set textwidth=75
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatical save before running a command
 set autowrite
@@ -27,6 +28,7 @@ syntax on
 " Maintain exisiting indentation
 set autoindent
 set smartindent
+" set breakindent
 " Maintain indentation for warpped line
 set breakindent
 " set cindent
@@ -52,7 +54,7 @@ hi CursorLine cterm=NONE ctermbg=238 ctermfg=NONE
 
 " hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
 
-highlight Normal ctermbg=black
+" highlight Normal ctermbg=black
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto complete brackets 
@@ -158,7 +160,6 @@ ino <down> <Nop>
 ino <left> <Nop> 
 ino <right> <Nop> 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Word Count Function
 
@@ -195,4 +196,8 @@ set statusline+=%y			" file type
 set statusline+=%=			" separator from left to right justified
 set statusline+=\ %{WordCount()}\ words,
 set statusline+=\ %l/%L\ lines,\ %P	" percentage through the file
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set Toggle paste
+set pastetoggle=<F2>
 
