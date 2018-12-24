@@ -10,7 +10,6 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 set nocompatible
 set background=dark
 set title
-set textwidth=75
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatical save before running a command
 set autowrite
@@ -30,8 +29,7 @@ set autoindent
 set smartindent
 " set breakindent
 " Maintain indentation for warpped line
-set breakindent
-" set cindent
+set cindent
 " filetype indent on
 " FIXES auto dedent when commenting with smartindent
 inoremap # X#
@@ -95,13 +93,6 @@ set t_ZR=[23m
 highlight Comment cterm=italic
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap j to k
-" Maybe this is not a good idea, but it seems more inutive
-" nnoremap j k
-" nnoremap k j
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mapping <ctrl> h,j,k,l to move between panels
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -112,6 +103,7 @@ map <C-l> <C-W>l
 set splitbelow
 set splitright
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " No one types jj, so you can use it to exit insert!
 inoremap jj <Esc>
 
@@ -155,10 +147,11 @@ no <down> <Nop>
 no <left> <Nop> 
 no <right> <Nop> 
 
-ino <up> <Nop> 
-ino <down> <Nop> 
-ino <left> <Nop> 
-ino <right> <Nop> 
+" In insert mode, map arrow keys to no op, training 
+" ino <up> <Nop> 
+" ino <down> <Nop> 
+" ino <left> <Nop> 
+" ino <right> <Nop> 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Word Count Function
@@ -201,3 +194,18 @@ set statusline+=\ %l/%L\ lines,\ %P	" percentage through the file
 " Set Toggle paste
 set pastetoggle=<F2>
 
+" Set Toggle textwidth
+let g:toggleText=0
+nnoremap <F3> :call SetTextwidth()<CR>
+
+function! SetTextwidth()
+     if g:toggleText == 0
+         set textwidth=75
+         let g:toggleText=75
+         echo g:toggleText
+     else
+         set textwidth=0
+         let g:toggleText=0
+         echo g:toggleText
+     endif
+endfunction
