@@ -2,7 +2,7 @@
 
 This is a collection of my personalized resource files~
 
-### How to Download
+### Download
 ```
 git clone https://github.com/saccharide/dotfiles.git
 ```
@@ -12,13 +12,9 @@ git clone https://github.com/saccharide/dotfiles.git
 
 1) Add permission to run
 ```
-chmod +x install.sh
+chmod +x INSTALL && ./INSTALL
 ````
-2) Run
-```
-./install.sh
-```
-3) Enjoy :)
+2) Enjoy :)
 
 ## Author
 **Saccharide**
