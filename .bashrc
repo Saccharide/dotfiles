@@ -134,6 +134,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias dd='dd status=progress'
 alias _='sudo'
+alias old='cd $OLDPWD'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
