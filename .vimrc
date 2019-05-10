@@ -56,10 +56,10 @@ hi CursorLine cterm=NONE ctermbg=238 ctermfg=NONE
 " highlight Normal ctermbg=black
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto complete brackets 
-inoremap {<cr> {<cr>}<c-o><s-o>
-inoremap [<cr> [<cr>]<c-o><s-o>
-inoremap (<cr> (<cr>)<c-o><s-o>
+" Auto complete brackets  -- REPLACE THIS WITH AUTO PAIRS! THAT IS MUCH BETTER. no waiting
+" inoremap {<cr> {<cr>}<c-o><s-o>
+" inoremap [<cr> [<cr>]<c-o><s-o>
+" inoremap (<cr> (<cr>)<c-o><s-o>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,6 +199,7 @@ set pastetoggle=<F2>
 nnoremap <F4> :set spell! spelllang=en_us<CR>
 
 " Set Toggle textwidth
+" This allows auto line warp, pretty neat
 let g:toggleText=0
 nnoremap <F3> :call SetTextwidth()<CR>
 
@@ -213,3 +214,35 @@ function! SetTextwidth()
          echo g:toggleText
      endif
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto completes a tag using closetag plugin
+
+let b:closetag_html_style=1
+source ~/.vim/bundle/closetag/closetag.vim
+
+" function s:CompleteTags()
+"   inoremap <buffer> > ></<C-x><C-o><Esc>:startinsert!<CR><C-O>?</<CR>
+"   inoremap <buffer> ><Leader> >
+"   inoremap <buffer> ><CR> ></<C-x><C-o><Esc>:startinsert!<CR><C-O>?</<CR><CR><Tab><CR><Up><C-O>$
+" endfunction
+" autocmd BufRead,BufNewFile *.html,*.js,*.xml call s:CompleteTags()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" enable filetype detection:
+filetype on
+filetype plugin on
+filetype indent on " file type based indentation
+
+" recognize anything in my .Postponed directory as a news article, and anything
+" at all with a .txt extension as being human-language text [this clobbers the
+" `help' filetype, but that doesn't seem to prevent help from working
+" properly]:
+augroup filetype
+  autocmd BufNewFile,BufRead */.Postponed/* set filetype=mail
+  autocmd BufNewFile,BufRead *.txt set filetype=human
+augroup END
+" in makefiles, don't expand tabs to spaces, since actual tab characters are
+" needed, and have indentation at 8 chars to be sure that all indents are tabs
+" (despite the mappings later):
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
