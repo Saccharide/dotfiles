@@ -130,11 +130,12 @@ fi
 
 # some more ls aliases
 alias ll='ls -halt'
-alias la='ls -A'
-alias l='ls -CF'
+alias la='ls -la'
+alias l='ls -halt'
 alias dd='dd status=progress'
 alias _='sudo'
 alias old='cd $OLDPWD'
+alias open='xdg-open'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -164,3 +165,19 @@ if [ -d $HOME/bin ]; then
 fi
 
 export TERM="xterm-256color"
+# added by Anaconda3 2018.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/saccharide/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/saccharide/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/saccharide/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/saccharide/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
