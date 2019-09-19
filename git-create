@@ -1,0 +1,32 @@
+#!/bin/bash
+
+username=$1
+repo_name=$2
+private_arg=$3
+
+# Check if username is empty
+if [[ -z $username ]]; then
+    echo "Username required."
+    echo "Usage: git create Username RepoName [private flag]"
+    exit 1
+fi
+
+# Check if Repo name is empty
+if [[ -z $repo_name ]]; then
+    echo "Repo name required."
+    echo "Usage: git create Username RepoName [private flag]"
+    exit 1
+fi
+
+private_flag=', "private" : "true"'
+if [[ -z $private_arg ]]; then
+    echo "Making a public repo ..."
+    private_flag=''
+else
+    echo "Making a private repo ..."
+fi
+
+curl -u $username https://api.github.com/user/repos -d "{\"name\":\"$repo_name\"$private_flag}" 
+git init
+# git remote add origin git@github.com:$username/$repo_name.git
+git remote add origin "https://github.com/$username/$repo_name"
