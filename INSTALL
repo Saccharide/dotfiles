@@ -9,15 +9,15 @@
 # Check if vimrc and bashrc exists, and make backup of them before override
 if [ -f $HOME/.vimrc ]; then
     echo "Backing up vimrc ..."
-    mv $HOME/.vimrc .vimrc_backup
+    mv $HOME/.vimrc $HOME/.vimrc_backup
 fi
 if [ -f $HOME/.bashrc ]; then
     echo "Backing up bashrc ..."
-    mv $HOME/.bashrc .bashrc_backup
+    mv $HOME/.bashrc $HOME/.bashrc_backup
 fi
 if [ -d $HOME/.vim ]; then
     echo "Backing up .vim ..."
-    mv $HOME/.vim .vim_backup
+    mv $HOME/.vim $HOME/.vim_backup
 fi
 cp .*rc $HOME
 cp -R .vim $HOME
