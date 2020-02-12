@@ -35,6 +35,11 @@ set cindent
 " FIXES auto dedent when commenting with smartindent
 inoremap # X#
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Case insensitive search, smart case will automatically switch to
+" case sensitive search when a capitalized letter is in the search
+" set ignorecase
+set smartcase
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader configs
 let mapleader = ","
 noremap <silent> <Leader>c :noh<cr>:call clearmatches()<cr>
