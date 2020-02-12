@@ -168,16 +168,39 @@ export TERM="xterm-256color"
 # added by Anaconda3 2018.12 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false \"/home/$USER/anaconda3/bin/conda\" shell.bash hook 2> /dev/null)"
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/saccharide/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
 if [ $? -eq 0 ]; then
     \eval "$__conda_setup"
 else
-    if [ -f "/home/$USER/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/$USER/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/saccharide/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/saccharide/anaconda3/etc/profile.d/conda.sh"
         CONDA_CHANGEPS1=false conda activate base
     else
-        \export PATH="/home/$USER/anaconda3/bin:$PATH"
+        \export PATH="/home/saccharide/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+# Added a function to find certain file within the current directory
+function findf(){
+    if [[ -z $1 ]]; then
+        echo "name cannot be empty."
+        exit 1
+    fi
+    find $(pwd) -iname "*$1*"
+}
+function gen(){
+    if [[ -z $1 ]]; then
+        echo "writeup file name cannot be empty."
+        exit 1
+    fi
+    echo -e "# $1\n## Author: **saccharide**\n\nTask\n\`\`\`\n\n\`\`\`\n\n## Approach\n\n## Flag\n\`\`" > "$1.md"
+}
+function mgrep(){
+    if [[ -z $1 ]]; then
+        echo "Search string cannot be empty."
+        exit 1
+    fi
+    ls | xargs -P 0 -I folder grep -ri $1 folder 2> /dev/null
+}

@@ -37,8 +37,9 @@ inoremap # X#
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader configs
 let mapleader = ","
-" noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
+noremap <silent> <Leader>c :noh<cr>:call clearmatches()<cr>
 nnoremap <Leader>q ciw``<Esc>P
+nnoremap <Leader>s *
 nnoremap <Leader>Q ciW``<Esc>P
 noremap <Leader><space> :w<CR>
 
@@ -95,6 +96,9 @@ set t_ZH=[3m
 set t_ZR=[23m
 highlight Comment cterm=italic
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set smart case search, if capitalized, search with case sensitive
+set smartcase
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mapping <ctrl> h,j,k,l to move between panels
 map <C-j> <C-W>j
@@ -252,3 +256,22 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 " Makes misspelled words visible on the same line!
 hi SpellBad cterm=underline
+
+" Tabs!!!!
+nnoremap <silent> <Tab><Tab> :tabnew<CR>
+nnoremap <silent> <Tab>q :tabclose<CR>
+noremap <silent> <Tab>o :tabonly<CR>
+nnoremap <silent> <Tab>s :tabs<CR>
+nnoremap <silent> <Tab>l :tabnext<CR>
+nnoremap <silent> <Tab>h :tabprevious<CR>
+nnoremap <silent> <Tab><Right> :tabnext<CR>
+nnoremap <silent> <Tab><Left> :tabprevious<CR>
+nnoremap <silent> <Tab>1 :tabnext 1<CR>
+nnoremap <silent> <Tab>2 :tabnext 2<CR>
+nnoremap <silent> <Tab>3 :tabnext 3<CR>
+nnoremap <silent> <Tab>4 :tabnext 4<CR>
+nnoremap <silent> <Tab>5 :tabnext 5<CR>
+nnoremap <silent> <Tab>6 :tabnext 6<CR>
+nnoremap <silent> <Tab>7 :tabnext 7<CR>
+nnoremap <silent> <Tab>8 :tabnext 8<CR>
+nnoremap <silent> <Tab>9 :tabnext 9<CR>

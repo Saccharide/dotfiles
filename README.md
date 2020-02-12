@@ -8,12 +8,10 @@ git clone https://github.com/saccharide/dotfiles.git
 ```
 
 ## How to install 
-
-1) Add permission to run
+1) Installing 
 ```bash
-chmod +x INSTALL && ./INSTALL
+make
 ```
-2) Enjoy :)
 
 ## Author
 **Saccharide**
