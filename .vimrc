@@ -280,3 +280,7 @@ nnoremap <silent> <Tab>6 :tabnext 6<CR>
 nnoremap <silent> <Tab>7 :tabnext 7<CR>
 nnoremap <silent> <Tab>8 :tabnext 8<CR>
 nnoremap <silent> <Tab>9 :tabnext 9<CR>
+
+
+" Gets rid of 'Thanks for flying vim message'
+let &titleold=getcwd()

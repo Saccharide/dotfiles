@@ -16,7 +16,7 @@ case $- in
       *) return;;
 esac
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin:/home/saccharide/.cargo/bin
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -99,6 +99,7 @@ function __prompt_command(){
         local EXIT="$?"
                 if [ "$color_prompt" = yes ]; then
                         PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+                        PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
                 else
                         PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
                 fi
@@ -197,10 +198,11 @@ function gen(){
     fi
     echo -e "# $1\n## Author: **saccharide**\n\nTask\n\`\`\`\n\n\`\`\`\n\n## Approach\n\n## Flag\n\`\`" > "$1.md"
 }
-function mgrep(){
+function pgrep(){
     if [[ -z $1 ]]; then
         echo "Search string cannot be empty."
         exit 1
     fi
-    ls | xargs -P 0 -I folder grep -ri $1 folder 2> /dev/null
+    ls | xargs -P 0 -I folder grep --color=always -ri $1 folder 2> /dev/null
 }
+
