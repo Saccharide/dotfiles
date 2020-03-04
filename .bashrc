@@ -204,6 +204,6 @@ function pgrep(){
         echo "Search string cannot be empty."
         exit 1
     fi
-    ls | xargs -P 0 -I folder grep --color=always -ri $1 folder 2> /dev/null
+    ls | xargs -P 0 -I folder grep --color=always -riI $1 folder 2> /dev/null
 }
 
