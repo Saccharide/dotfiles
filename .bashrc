@@ -207,3 +207,4 @@ function pgrep(){
     ls | xargs -P 0 -I folder grep --color=always -riI "$1" folder 2> /dev/null
 }
 
+set -o vi
