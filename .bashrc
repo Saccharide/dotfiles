@@ -98,6 +98,7 @@ export PROMPT_COMMAND=__prompt_command      # Func to gen PS1 after CMDs
 function __prompt_command(){
         local EXIT="$?"
                 if [ "$color_prompt" = yes ]; then
+                    # change terminal title to be the current directory
                         PS1="\[\e]0;\w\a\]\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
                         #PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
                         #PROMPT_COMMAND='echo -ne "\033]0;\w\007"'
@@ -138,6 +139,11 @@ alias dd='dd status=progress'
 alias _='sudo'
 alias old='cd $OLDPWD'
 alias open='xdg-open'
+alias v='vim'
+alias g='cd ~/git'
+alias m='cd ~/Music'
+alias p='python'
+alias p3='python3'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

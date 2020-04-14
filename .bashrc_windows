@@ -1,3 +1,10 @@
+##################################################################################################
+# '''
+# // @Project      Cool Bashrc from Parrot OS
+# // @Author       Saccharide
+# '''
+##################################################################################################
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -8,6 +15,7 @@ case $- in
       *) return;;
 esac
 
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -61,6 +69,21 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+# Set 'man' colors
+if [ "$color_prompt" = yes ]; then
+	man() {
+	env \
+	LESS_TERMCAP_mb=$'\e[01;31m' \
+	LESS_TERMCAP_md=$'\e[01;31m' \
+	LESS_TERMCAP_me=$'\e[0m' \
+	LESS_TERMCAP_se=$'\e[0m' \
+	LESS_TERMCAP_so=$'\e[01;44;33m' \
+	LESS_TERMCAP_ue=$'\e[0m' \
+	LESS_TERMCAP_us=$'\e[01;32m' \
+	man "$@"
+	}
+fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -99,7 +122,9 @@ alias dd='dd status=progress'
 alias _='sudo'
 alias old='cd $OLDPWD'
 alias open='xdg-open'
-
+alias v='vim'
+alias p='python'
+alias p3='python3'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -125,6 +150,17 @@ if ! shopt -oq posix; then
   fi
 fi
 # Added a function to find certain file within the current directory
+function start(){
+        /mnt/c/Windows/System32/cmd.exe /c start $1
+}
+function clip(){
+        /mnt/c/Windows/System32/clip.exe $1
+        
+}
+function pdflatex(){
+        "/mnt/c/Program Files/MiKTeX 2.9/miktex/bin/x64/pdflatex.exe" $1
+}
+
 function findf(){
     if [[ -z $1 ]]; then
         echo "name cannot be empty."
