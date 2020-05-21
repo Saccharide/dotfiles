@@ -137,11 +137,13 @@ alias la='ls -la'
 alias l='ls -halt'
 alias dd='dd status=progress'
 alias _='sudo'
-alias old='cd $OLDPWD'
+alias old="cd $OLDPWD"
 alias open='xdg-open'
 alias v='vim'
-alias g='cd ~/git'
-alias m='cd ~/Music'
+alias g="cd $HOME/git"
+export G="$HOME/git"
+alias m="cd $HOME/Music"
+export M="$HOME/Music"
 alias p='python'
 alias p3='python3'
 
@@ -194,21 +196,21 @@ unset __conda_setup
 function findf(){
     if [[ -z $1 ]]; then
         echo "name cannot be empty."
-        exit 1
+        return
     fi
     find $(pwd) -iname "*$1*"
 }
 function gen(){
     if [[ -z $1 ]]; then
         echo "writeup file name cannot be empty."
-        exit 1
+        return
     fi
     echo -e "# $1\n## Author: **saccharide**\n\nTask\n\`\`\`\n\n\`\`\`\n\n## Approach\n\n## Flag\n\`\`" > "$1.md"
 }
 function pgrep(){
     if [[ -z $1 ]]; then
         echo "Search string cannot be empty."
-        exit 1
+        return
     fi
     ls | xargs -P 0 -I folder grep --color=always -riI "$1" folder 2> /dev/null
 }
