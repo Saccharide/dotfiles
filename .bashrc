@@ -205,7 +205,7 @@ function gen(){
         echo "writeup file name cannot be empty."
         return
     fi
-    echo -e "# $1\n## Author: **saccharide**\n\nTask\n\`\`\`\n\n\`\`\`\n\n## Approach\n\n## Flag\n\`\`" > "$1.md"
+    echo -e "# $1\n## Author: saccharide\n\nTask\n\`\`\`\n\n\`\`\`\n\n## Approach\n\n## Flag\n\`\`" > "$1.md"
 }
 function pgrep(){
     if [[ -z $1 ]]; then
