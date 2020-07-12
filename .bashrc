@@ -146,7 +146,7 @@ alias m="cd $HOME/Music"
 export M="$HOME/Music"
 alias p='python'
 alias p3='python3'
-
+export HISTTIMEFORMAT='%F %T '
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
