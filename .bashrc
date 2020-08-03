@@ -16,7 +16,7 @@ case $- in
       *) return;;
 esac
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin:/home/saccharide/.cargo/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -175,22 +175,6 @@ if [ -d $HOME/bin ]; then
 fi
 
 export TERM="xterm-256color"
-# added by Anaconda3 2018.12 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/saccharide/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/home/saccharide/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/saccharide/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/home/saccharide/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
 
 # Added a function to find certain file within the current directory
 function findf(){
