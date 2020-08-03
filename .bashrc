@@ -212,7 +212,7 @@ function pgrep(){
         echo "Search string cannot be empty."
         return
     fi
-    ls | xargs -P 0 -I folder grep --color=always -riI "$1" folder 2> /dev/null
+    ls | xargs -P 0 -I folder grep --color=always -riHIs "$1" folder 
 }
 
 set -o vi
