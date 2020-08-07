@@ -199,4 +199,20 @@ function pgrep(){
     ls | xargs -P 0 -I folder grep --color=always -riHIs "$1" folder 
 }
 
+function catn(){
+    if [[ -z $1 || -z $2 ]]; then
+        echo "Usage: catn LINE_NUMBER FILE_NAME"
+        echo "Ex: catn 4 file.txt"
+        return
+
+    elif [[ $3 ]]; then
+        awk "($1-5)<NR && NR<($1+5){print}" $2
+        return
+
+    else
+        awk "($1-3)<NR && NR<($1+3){print}" $2
+        return
+    fi
+}
+
 set -o vi
