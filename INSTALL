@@ -41,3 +41,9 @@ if [[ -z $(cat ~/.bashrc | grep "export PATH=\$HOME/bin:\$PATH") ]]; then
     echo "Adding \$HOME/bin to path ..."
     echo "export PATH=\$HOME/bin:\$PATH" >> ~/.bashrc
 fi
+
+echo "Setting git global name"
+git config --global user.name "saccharide"
+
+echo "Setting git global email"
+git config --global user.email "36411557+Saccharide@users.noreply.github.com"
