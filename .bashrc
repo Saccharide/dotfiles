@@ -136,7 +136,7 @@ alias ll='ls -halt'
 alias la='ls -la'
 alias l='ls -halt'
 alias dd='dd status=progress'
-alias _='sudo'
+alias _='sudo '
 alias old="cd $OLDPWD"
 alias open='xdg-open'
 alias v='vim'
@@ -146,6 +146,7 @@ alias m="cd $HOME/Music"
 export M="$HOME/Music"
 alias p='python'
 alias p3='python3'
+alias sudo='sudo '
 export HISTTIMEFORMAT='%F %T '
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -216,3 +217,9 @@ function catn(){
 }
 
 set -o vi
+
+LS_COLORS=$LS_COLORS':di=36;01'
+LS_COLORS=$LS_COLORS':tw=36;01'
+LS_COLORS=$LS_COLORS':ow=36;01'
+export LS_COLORS
+
