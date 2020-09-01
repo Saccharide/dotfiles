@@ -36,6 +36,9 @@ echo "Copying git-addons to $homebin ..."
 
 cp git* $HOME/bin
 
+echo "Copying saccharide.vim  to $HOME/.vim/colors ..."
+cp saccharide.vim $HOME/.vim/colors
+
 echo "Finished!"
 if [[ -z $(cat ~/.bashrc | grep "export PATH=\$HOME/bin:\$PATH") ]]; then
     echo "Adding \$HOME/bin to path ..."

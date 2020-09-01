@@ -18,6 +18,8 @@ set background=dark
 let g:airline#extensions#tabline#enabled = 1
 autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 set title
+
+colorscheme saccharide
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically save before running a command
 set autowrite
