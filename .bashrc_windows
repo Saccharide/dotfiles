@@ -5,7 +5,6 @@
 # '''
 ##################################################################################################
 
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -17,7 +16,6 @@ case $- in
 esac
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -71,7 +69,6 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
 fi
-
 # Set 'man' colors
 if [ "$color_prompt" = yes ]; then
 	man() {
@@ -87,34 +84,17 @@ if [ "$color_prompt" = yes ]; then
 	}
 fi
 
+unset color_prompt force_color_prompt
+
 # If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
 
-
-export color_prompt="yes"
-
-# Replacing the error mark with error code retrun by the program 
-export PROMPT_COMMAND=__prompt_command      # Func to gen PS1 after CMDs
-
-function __prompt_command(){
-        local EXIT="$?"
-                if [ "$color_prompt" = yes ]; then
-                        PS1="\[\e]0;\w\a\]\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
-                else
-                        PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
-                fi
-}
-
-
-# Original color setting
-# case "$TERM" in
-# xterm*|rxvt*)
-#     EXIT=$?
-#     echo $EXIT
-#     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\$EXIT\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
-#     ;;
-# *)
-#     ;;
-# esac
+     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\$EXIT\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+    ;;
+*)
+    ;;
+esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -128,7 +108,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
 alias ll='ls -halt'
 alias la='ls -la'
 alias l='ls -halt'
@@ -140,6 +126,8 @@ alias v='vim'
 alias p='python'
 alias p3='python3'
 alias sudo='sudo '
+alias f='fg '
+alias j='jobs '
 export HISTTIMEFORMAT='%F %T '
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -160,15 +148,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# check if local bin folder exist
-# $HOME/bin
-# prepend it to $PATH if so
-if [ -d $HOME/bin ]; then
-    export PATH=$HOME/bin:$PATH
-fi
-
-export TERM="xterm-256color"
+# Added a function to find certain file within the current directory
 function start(){
         /mnt/c/Windows/System32/cmd.exe /c start $1
 }
@@ -192,9 +172,8 @@ function gen(){
         echo "writeup file name cannot be empty."
         return
     fi
-    echo -e "# $1\n## Author: saccharide\n\nTask\n\`\`\`\n\n\`\`\`\n\n## Approach\n\n## Flag\n\`\`" > "$1.md"
+    echo -e "# $1\n## Author: saccharide\n\n## Approach\n\n## Exploit\n" > "$1.md"
 }
-
 function pgrep(){
     if [[ -z $1 ]]; then
         echo "Search string cannot be empty."
@@ -203,10 +182,10 @@ function pgrep(){
     ls | xargs -P 0 -I folder grep --color=always -riHIs "$1" folder 
 }
 
-function catn(){
+function line(){
     if [[ -z $1 || -z $2 ]]; then
-        echo "Usage: catn LINE_NUMBER FILE_NAME"
-        echo "Ex: catn 4 file.txt"
+        echo "Usage: line LINE_NUMBER FILE_NAME"
+        echo "Ex: line 4 file.txt"
         return
 
     elif [[ $3 ]]; then
@@ -219,6 +198,26 @@ function catn(){
     fi
 }
 
+function sshlab(){
+    if [[ -f 'creds' ]]; then
+        pass=`tail -n 1 creds`
+        server=`head -n 1 creds`
+        sed -i "s/ssh.*$/$server/g" ~/.login
+        sed -i "s/send.*$/send $pass/g" ~/.login
+        sed -i 's/send.*$/&\\n;/g' ~/.login
+        cat ~/.login
+        ~/.login
+        return
+
+    else
+        echo "'creds' file does not exisit. Quitting..."
+        return
+    fi
+}
+
+export PATH=$PATH:/usr/local/go/bin:/home/saccharide/go/bin
+export GOPATH=/home/saccharide/go/
+export DISPLAY=:0
 set -o vi
 
 LS_COLORS=$LS_COLORS':di=36;01'

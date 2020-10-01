@@ -16,7 +16,7 @@ case $- in
       *) return;;
 esac
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/local/bin:
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -147,6 +147,8 @@ export M="$HOME/Music"
 alias p='python'
 alias p3='python3'
 alias sudo='sudo '
+alias f='fg '
+alias j='jobs '
 export HISTTIMEFORMAT='%F %T '
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -190,7 +192,7 @@ function gen(){
         echo "writeup file name cannot be empty."
         return
     fi
-    echo -e "# $1\n## Author: saccharide\n\nTask\n\`\`\`\n\n\`\`\`\n\n## Approach\n\n## Flag\n\`\`" > "$1.md"
+    echo -e "# $1\n## Author: saccharide\n\n## Approach\n\n## Exploit\n" > "$1.md"
 }
 function pgrep(){
     if [[ -z $1 ]]; then
@@ -198,28 +200,45 @@ function pgrep(){
         return
     fi
     ls | xargs -P 0 -I folder grep --color=always -riHIs "$1" folder 
-}
+    }
 
-function catn(){
-    if [[ -z $1 || -z $2 ]]; then
-        echo "Usage: catn LINE_NUMBER FILE_NAME"
-        echo "Ex: catn 4 file.txt"
-        return
+    function line(){
+        if [[ -z $1 || -z $2 ]]; then
+            echo "Usage: line LINE_NUMBER FILE_NAME"
+            echo "Ex: line 4 file.txt"
+            return
 
-    elif [[ $3 ]]; then
-        awk "($1-5)<NR && NR<($1+5){print}" $2
-        return
+        elif [[ $3 ]]; then
+            awk "($1-5)<NR && NR<($1+5){print}" $2
+            return
 
-    else
-        awk "($1-3)<NR && NR<($1+3){print}" $2
-        return
-    fi
-}
+        else
+            awk "($1-3)<NR && NR<($1+3){print}" $2
+            return
+        fi
+    }
 
-set -o vi
+    function sshlab(){
+        if [[ -f 'creds' ]]; then
+            pass=`tail -n 1 creds`
+            server=`head -n 1 creds`
+            sed -i "s/ssh.*$/$server/g" ~/.login
+            sed -i "s/send.*$/send $pass/g" ~/.login
+            sed -i 's/send.*$/&\\n;/g' ~/.login
+            cat ~/.login
+            ~/.login
+            return
 
-LS_COLORS=$LS_COLORS':di=36;01'
-LS_COLORS=$LS_COLORS':tw=36;01'
-LS_COLORS=$LS_COLORS':ow=36;01'
-export LS_COLORS
+        else
+            echo "'creds' file does not exisit. Quitting..."
+            return
+        fi
+    }
+
+    set -o vi
+
+    LS_COLORS=$LS_COLORS':di=36;01'
+    LS_COLORS=$LS_COLORS':tw=36;01'
+    LS_COLORS=$LS_COLORS':ow=36;01'
+    export LS_COLORS
 
