@@ -50,3 +50,8 @@ git config --global user.name "saccharide"
 
 echo "Setting git global email"
 git config --global user.email "36411557+Saccharide@users.noreply.github.com"
+
+mkdir -p $HOME/.ssh
+
+echo "chmod 644 id_rsa.pub"
+echo "chmod 600 id_rsa"
