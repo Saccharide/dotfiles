@@ -21,6 +21,7 @@ if [ -d $HOME/.vim ]; then
 fi
 cp .*rc $HOME
 cp -R .vim $HOME
+cp .tmux.conf $HOME
 echo "Creating .vimtmp for persistent undo..."
 mkdir $HOME/.vimtmp
 mv $HOME/.vim/bundle_temp $HOME/.vim/bundle
@@ -33,7 +34,6 @@ if [ ! -d "$homebin" ]; then
 fi
 
 echo "Copying git-addons to $homebin ..."
-
 cp git* $HOME/bin
 
 echo "Copying saccharide.vim  to $HOME/.vim/colors ..."
