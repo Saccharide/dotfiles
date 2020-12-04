@@ -113,10 +113,10 @@ highlight Comment cterm=italic
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mapping <ctrl> h,j,k,l to move between panels
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map J <C-W>j
+map K <C-W>k
+map H <C-W>h
+map L <C-W>l
 
 " Splits below and split right instead of the default
 set splitbelow
