@@ -10,7 +10,7 @@ git clone https://github.com/saccharide/dotfiles.git
 ## How to install 
 1) Installing 
 ```bash
-make
+./INSTALL
 ```
 
 ## Author

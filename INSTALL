@@ -51,10 +51,15 @@ git config --global user.name "saccharide"
 echo "Setting git global email"
 git config --global user.email "36411557+Saccharide@users.noreply.github.com"
 
-echo "Generate SSH key"
+mkdir -p $HOME/.ssh
+
+echo "Generating SSH key..."
 ssh-keygen -t rsa -b 4096 -C "36411557+Saccharide@users.noreply.github.com"
 
-mkdir -p $HOME/.ssh
+echo "Your new SSH Public Key is: "
+
+cat $HOME/.ssh/id_rsa.pub
+
 
 echo "chmod 644 id_rsa.pub"
 echo "chmod 600 id_rsa"
