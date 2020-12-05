@@ -241,4 +241,11 @@ function pgrep(){
     LS_COLORS=$LS_COLORS':tw=36;01'
     LS_COLORS=$LS_COLORS':ow=36;01'
     export LS_COLORS
-
+function a(){
+    if [[ -f "x.py" ]]; then
+        echo "x.py already exist!"
+        return
+    fi
+    echo -e "from pwn import *\nimport angr\ncontext.update(arch='i386', os='linux')\n\np = angr.Project('./target')\n" > x.py
+ 
+    echo 'accepted' >> x.py
