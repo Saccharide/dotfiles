@@ -328,8 +328,6 @@ if executable(s:clip)
     augroup END
 end
 
-" Map Control + O to be auto complete next, had to do this to resolve conflict for tmux
-inoremap <C-O> <C-N>
 " Map Control + B to be auto complete prev, had to do this to remove conflict for tmux
 inoremap <C-B> <C-P>
 
