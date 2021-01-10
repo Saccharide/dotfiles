@@ -1,3 +1,4 @@
+set t_u7=
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " @title            .vimrc
 " @description      Personal vimrc file
@@ -15,11 +16,10 @@ function! AirlineInit()
 autocmd User AirlineAfterInit call AirlineInit()
 set nocompatible
 set background=dark
+colorscheme saccharide
 let g:airline#extensions#tabline#enabled = 1
 autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 set title
-
-colorscheme saccharide
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically save before running a command
 set autowrite
@@ -54,8 +54,8 @@ set smartcase
 let mapleader = ","
 noremap <silent> <Leader>c :noh<cr>:call clearmatches()<cr>
 nnoremap <Leader>q ciw``<Esc>P
-nnoremap <Leader>s *
-nnoremap <Leader>Q ciW``<Esc>P
+nnoremap <Leader>s *N
+nnoremap <Leader>w ciW``<Esc>P
 noremap <Leader><space> :w<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,6 +98,7 @@ nmap     G Gzz
 nmap     } }zz
 nmap     } {zz
 
+nnoremap * *N
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding
 set foldmethod=indent   
@@ -113,7 +114,12 @@ highlight Comment cterm=italic
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mapping <ctrl> h,j,k,l to move between panels
-map J <C-W>j
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
+
+"map J <C-W>j
 map K <C-W>k
 map H <C-W>h
 map L <C-W>l
@@ -190,6 +196,7 @@ function UpdateWordCount()
 	endwhile
 	let g:word_count = n
 endfunction
+
 
 " Update the count when cursor is idle in command or insert mode.
 " Update when idle for 1000 msec (default is 4000 msec).
@@ -318,6 +325,10 @@ set clipboard=unnamedplus
 """ Aliasing yank to use system clipbaord manually, require to have +clipbobard, `sudo apt install vim-gtk`
 " noremap <Leader>y "+y
 " noremap <Leader>p "+p
+
+set lazyredraw
+set showcmd
+set wildmenu
 
 """ Link Windows clipboard when using WSL
 let s:clip = '/mnt/c/Windows/System32/clip.exe' 
