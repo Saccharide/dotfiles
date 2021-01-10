@@ -251,7 +251,7 @@ source ~/.vim/bundle/closetag/closetag.vim
 " enable filetype detection:
 filetype on
 filetype plugin on
-filetype indent on " file type based indentation
+"filetype indent on " file type based indentation COMMENT THIS OUT, it CAUSES LAGS when entering a newline
 
 " recognize anything in my .Postponed directory as a news article, and anything
 " at all with a .txt extension as being human-language text [this clobbers the
@@ -330,6 +330,4 @@ end
 
 " Map Control + B to be auto complete prev, had to do this to remove conflict for tmux
 inoremap <C-B> <C-P>
-
-                        
 
