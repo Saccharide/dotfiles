@@ -249,3 +249,4 @@ function a(){
     echo -e "from pwn import *\nimport angr\ncontext.update(arch='i386', os='linux')\n\np = angr.Project('./target')\n" > x.py
  
     echo 'accepted' >> x.py
+}
