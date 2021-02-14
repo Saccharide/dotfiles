@@ -9,16 +9,27 @@
 # Check if vimrc and bashrc exists, and make backup of them before override
 if [ -f $HOME/.vimrc ]; then
     echo "Backing up vimrc ..."
-    mv $HOME/.vimrc $HOME/.vimrc_backup
+    mv $HOME/.vimrc $HOME/.vimrc.bak
 fi
 if [ -f $HOME/.bashrc ]; then
     echo "Backing up bashrc ..."
-    mv $HOME/.bashrc $HOME/.bashrc_backup
+    mv $HOME/.bashrc $HOME/.bashrc.bak
 fi
 if [ -d $HOME/.vim ]; then
     echo "Backing up .vim ..."
-    mv $HOME/.vim $HOME/.vim_backup
+    mv $HOME/.vim $HOME/.vim_bak
 fi
+
+if [ -f $HOME/.gitignore  ]; then
+    echo "Backing up ,gitignore ..."
+    mv $HOME/.gitignore $HOME/.gitignore.bak
+
+echo '*.swp' > $HOME/.gitignore
+
+echo "Making a global gitignore"
+git config --global core.excludesfile $HOME/.gitignore
+
+
 cp .*rc $HOME
 cp -R .vim $HOME
 cp .tmux.conf $HOME
@@ -64,10 +75,12 @@ cat $HOME/.ssh/id_rsa.pub
 echo "chmod 644 id_rsa.pub"
 echo "chmod 600 id_rsa"
 
+echo "Adding vim airline and clock"
 cd $HOME/.vim/bundle
 git clone https://github.com/vim-airline/vim-airline
 git clone https://github.com/enricobacis/vim-airline-clock
 
+echo "Adding vim easymotion"
 # CHECK OUT VIM EASYMOTION, very cool, need to learn it sometimes
 git clone https://github.com/easymotion/vim-easymotion
 
