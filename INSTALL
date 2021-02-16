@@ -24,7 +24,7 @@ if [ -f $HOME/.gitignore  ]; then
     echo "Backing up ,gitignore ..."
     mv $HOME/.gitignore $HOME/.gitignore.bak
 
-echo '*.swp' > $HOME/.gitignore
+cp .gitignore $HOME/.gitignore
 
 echo "Making a global gitignore"
 git config --global core.excludesfile $HOME/.gitignore
