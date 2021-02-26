@@ -150,6 +150,8 @@ alias sudo='sudo '
 alias f='fg '
 alias j='jobs '
 export HISTTIMEFORMAT='%F %T '
+export VISUAL=vim
+export EDITOR="$VISUAL"
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
