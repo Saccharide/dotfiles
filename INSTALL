@@ -20,10 +20,10 @@ if [ -d $HOME/.vim ]; then
     mv $HOME/.vim $HOME/.vim_bak
 fi
 
-if [ -f $HOME/.gitignore  ]; then
+if [ -f $HOME/.gitignore ]; then
     echo "Backing up ,gitignore ..."
     mv $HOME/.gitignore $HOME/.gitignore.bak
-
+fi
 cp .gitignore $HOME/.gitignore
 
 echo "Making a global gitignore"
