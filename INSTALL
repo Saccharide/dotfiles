@@ -87,3 +87,4 @@ echo "Adding vim easymotion"
 # CHECK OUT VIM EASYMOTION, very cool, need to learn it sometimes
 git clone https://github.com/easymotion/vim-easymotion
 
+source ~/.bashrc

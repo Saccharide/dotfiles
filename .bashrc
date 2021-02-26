@@ -148,6 +148,7 @@ alias p='python'
 alias p3='python3'
 alias sudo='sudo '
 alias f='fg '
+alias d='cd $HOME/Desktop '
 alias j='jobs '
 export HISTTIMEFORMAT='%F %T '
 export VISUAL=vim
