@@ -345,3 +345,5 @@ inoremap <C-B> <C-P>
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>  
+
+let g:python_highlight_all = 1
