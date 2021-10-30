@@ -347,3 +347,9 @@ map gp :bp<cr>
 map gd :bd<cr>  
 
 let g:python_highlight_all = 1
+
+
+" Black python fixer, use f12 to run black
+nnoremap <F12> :Black<CR>
+" Uncomment the line below to run black whenever we save the file
+" autocmd BufWritePre *.py execute ':Black'
