@@ -150,6 +150,8 @@ alias sudo='sudo '
 alias f='fg '
 alias d='cd $HOME/Desktop '
 alias j='jobs '
+alias hexdump='hexdump -C '
+alias du='du -ch --max-depth=1 .'
 export HISTTIMEFORMAT='%F %T '
 export VISUAL=vim
 export EDITOR="$VISUAL"
