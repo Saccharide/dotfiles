@@ -107,7 +107,9 @@ curl https://raw.githubusercontent.com/psf/black/stable/autoload/black.vim -o ~/
 
 echo "Installing flake8"
 git clone --recursive https://github.com/andviro/flake8-vim.git
-
+mkdir -p ~/.vim/pack/flake8/start/
+cd ~/.vim/pack/flake8/start/
+git clone https://github.com/nvie/vim-flake8.git
 
 echo "Installing ale"
 mkdir -p ~/.vim/pack/git-plugins/start
