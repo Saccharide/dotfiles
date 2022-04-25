@@ -35,6 +35,7 @@ git config --global pull.rebase true
 cp .*rc $HOME
 cp -R .vim $HOME
 cp .tmux.conf $HOME
+cp .flake8 $HOME
 echo "Creating .vimtmp for persistent undo..."
 mkdir $HOME/.vimtmp
 mv $HOME/.vim/bundle_temp $HOME/.vim/bundle
@@ -105,14 +106,16 @@ curl https://raw.githubusercontent.com/psf/black/stable/plugin/black.vim -o ~/.v
 curl https://raw.githubusercontent.com/psf/black/stable/autoload/black.vim -o ~/.vim/pack/python/start/black/autoload/black.vim
 
 
-echo "Installing flake8"
+echo "Installing ale"
+mkdir -p ~/.vim/pack/git-plugins/start
+git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale
+
+
+echo "Installing flake8, config file can be placed in ~/.flake8"
 git clone --recursive https://github.com/andviro/flake8-vim.git
 mkdir -p ~/.vim/pack/flake8/start/
 cd ~/.vim/pack/flake8/start/
 git clone https://github.com/nvie/vim-flake8.git
 
-echo "Installing ale"
-mkdir -p ~/.vim/pack/git-plugins/start
-git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale
-
+cd $HOME
 source $HOME/.bashrc
