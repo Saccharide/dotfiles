@@ -104,4 +104,13 @@ mkdir -p ~/.vim/pack/python/start/black/autoload
 curl https://raw.githubusercontent.com/psf/black/stable/plugin/black.vim -o ~/.vim/pack/python/start/black/plugin/black.vim
 curl https://raw.githubusercontent.com/psf/black/stable/autoload/black.vim -o ~/.vim/pack/python/start/black/autoload/black.vim
 
+
+echo "Installing flake8"
+git clone --recursive https://github.com/andviro/flake8-vim.git
+
+
+echo "Installing ale"
+mkdir -p ~/.vim/pack/git-plugins/start
+git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale
+
 source $HOME/.bashrc
