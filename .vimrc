@@ -303,13 +303,6 @@ nnoremap <silent> <Tab>9 :tabnext 9<CR>
 " Gets rid of 'Thanks for flying vim message'
 let &titleold=getcwd()
 
-" Set syntax highlighting for solidity
-augroup sol_ft
-  au!
-  autocmd BufNewFile,BufRead *.sol   set syntax=javascript
-augroup END
-
-
 """ Persistent Undo !
 set undofile
 set undodir=$HOME/.vimtmp
@@ -362,3 +355,6 @@ nnoremap <F12> :Black<CR>
 "
 let g:ale_linters = {'python': ['flake8']}
 " let g:ale_linters = {'python': ['black']}
+
+" Remap :` to :sav for easy saveas
+cmap ` sav
