@@ -99,7 +99,7 @@ echo "Adding python syntax highlighting for vim ..."
 git clone https://github.com/vim-python/python-syntax
 
 echo "Installing black ..."
-pip install black
+pip3 install black
 mkdir -p ~/.vim/pack/python/start/black/plugin
 mkdir -p ~/.vim/pack/python/start/black/autoload
 curl https://raw.githubusercontent.com/psf/black/stable/plugin/black.vim -o ~/.vim/pack/python/start/black/plugin/black.vim
