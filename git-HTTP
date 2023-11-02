@@ -6,8 +6,8 @@ if [ ! -d ".git" ]; then
 fi
 
 if [[ $(cat .git/config | grep url) != *"https://"* ]]; then
-    username=$(cat .git/config | grep url | cut -d ':' -f 2 | cut -d '/' -f 1)
-    repo=$(cat .git/config | grep url | cut -d ':' -f 2 | cut -d '/' -f 2)
+    username=$(cat .git/config | grep url | head -n 1 | cut -d ':' -f 2 | cut -d '/' -f 1)
+    repo=$(cat .git/config | grep url | head -n 1 | cut -d ':' -f 2 | cut -d '/' -f 2)
     git remote set-url origin "https://github.com/$username/$repo" 
     echo "Success in changing from SSH to HTTP."
 else
