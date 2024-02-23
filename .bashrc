@@ -152,6 +152,7 @@ alias du='du -ch --max-depth=1 .'
 export HISTTIMEFORMAT='%F %T '
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export CLICOLOR=1
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
