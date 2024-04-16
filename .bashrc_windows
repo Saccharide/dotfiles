@@ -84,17 +84,40 @@ if [ "$color_prompt" = yes ]; then
 	}
 fi
 
-unset color_prompt force_color_prompt
+# If this is an xterm set the title to user@host:dir
+
+
+export color_prompt="yes"
+
+# Replacing the error mark with error code retrun by the program 
+export PROMPT_COMMAND=__prompt_command      # Func to gen PS1 after CMDs
+
+function __prompt_command(){
+        local EXIT="$?"
+                if [ "$color_prompt" = yes ]; then
+                    # change terminal title to be the current directory
+                        PS1="\[\e]0;\w\a\]\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]$(__git_ps1) $(date +%m/%d/%y\ %H:%M:%S)\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+                        #PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+                        #PROMPT_COMMAND='echo -ne "\033]0;\w\007"'
+                else
+                        PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
+                fi
+}
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
 
-     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\$EXIT\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
-    ;;
-*)
-    ;;
-esac
+# Original color setting
+# case "$TERM" in
+# xterm*|rxvt*)
+#     EXIT=$?
+#     echo $EXIT
+#     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\$EXIT\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+#     ;;
+# *)
+#     ;;
+# esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -128,7 +151,12 @@ alias p3='python3'
 alias sudo='sudo '
 alias f='fg '
 alias j='jobs '
+alias hexdump='hexdump -C '
+alias du='du -ch --max-depth=1 .'
 export HISTTIMEFORMAT='%F %T '
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export CLICOLOR=1
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -148,6 +176,16 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# check if local bin folder exist
+# $HOME/bin
+# prepend it to $PATH if so
+if [ -d $HOME/bin ]; then
+    export PATH=$HOME/bin:$PATH
+fi
+
+export TERM="xterm-256color"
+
 # Added a function to find certain file within the current directory
 function start(){
         /mnt/c/Windows/System32/cmd.exe /c start $1
