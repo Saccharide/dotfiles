@@ -96,6 +96,8 @@ export color_prompt="yes"
 # Replacing the error mark with error code retrun by the program 
 export PROMPT_COMMAND=__prompt_command      # Func to gen PS1 after CMDs
 
+alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+
 function __prompt_command(){
         local EXIT="$?"
                 if [ "$color_prompt" = yes ]; then
