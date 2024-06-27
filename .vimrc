@@ -16,6 +16,8 @@ function! AirlineInit()
 autocmd User AirlineAfterInit call AirlineInit()
 set nocompatible
 set background=dark
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 colorscheme saccharide
 let g:airline#extensions#tabline#enabled = 1
 autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
