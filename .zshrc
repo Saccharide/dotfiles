@@ -15,12 +15,18 @@ function __prompt_command(){
 
 }
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+# Reverse search
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+
 #
 #
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.zsh_history
 man() {
 	env \
 	LESS_TERMCAP_mb=$'\e[01;31m' \
