@@ -16,6 +16,8 @@ function! AirlineInit()
 autocmd User AirlineAfterInit call AirlineInit()
 set nocompatible
 set background=dark
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 colorscheme saccharide
 let g:airline#extensions#tabline#enabled = 1
 autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
@@ -312,8 +314,10 @@ set history=9999
 """ Scroll the page util 3 lines left
 set scrolloff=3
 
-""" Set default yank/paste to system clipboard
-set clipboard=unnamedplus
+""" Set default yank/paste to system clipboard for mac
+set clipboard=unnamed
+""" Set default yank/paste to system clipboard for linux
+"set clipboard=unnamedplus
 
 """ Aliasing yank to use system clipbaord manually, require to have +clipbobard, `sudo apt install vim-gtk`
 " noremap <Leader>y "+y
