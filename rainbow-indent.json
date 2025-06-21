@@ -1,32 +1,63 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"workbench.colorCustomizations": {
-			"activityBar.activeBackground": "#3399ff",
-			"activityBar.background": "#3399ff",
-			"activityBar.foreground": "#15202b",
-			"activityBar.inactiveForeground": "#15202b99",
-			"activityBarBadge.background": "#bf0060",
-			"activityBarBadge.foreground": "#e7e7e7",
-			"commandCenter.border": "#e7e7e799",
-			"sash.hoverBorder": "#3399ff",
-			"statusBar.background": "#007fff",
-			"statusBar.foreground": "#e7e7e7",
-			"statusBarItem.hoverBackground": "#3399ff",
-			"statusBarItem.remoteBackground": "#007fff",
-			"statusBarItem.remoteForeground": "#e7e7e7",
-			"titleBar.activeBackground": "#007fff",
-			"titleBar.activeForeground": "#e7e7e7",
-			"titleBar.inactiveBackground": "#007fff99",
-			"titleBar.inactiveForeground": "#e7e7e799"
-		},
-		"peacock.color": "#007fff",
-		"indentRainbow.indentSetter": {
-		
-		}
-	}
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.startupEditor": "none",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.tabCompletion": "on",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnType": true,
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "diffEditor.ignoreTrimWhitespace": true
+    },
+    "markdown-preview-github-styles.colorTheme": "dark",
+    "solidity.telemetry": false,
+    "markdown-preview-github-styles.darkTheme": "dark_colorblind",
+    "editor.guides.bracketPairs": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "indentRainbow.colors": [
+
+        "rgba(255,255,64,0.9)",
+        "rgba(127,255,127,0.9)",
+        "rgba(255,127,255,0.9)",
+        "rgba(217,57,0,0.9)"
+    ],
+    "indentRainbow.errorColor": "rgba(128,32,32,0.6)",
+    "indentRainbow.tabmixColor": "rgba(128,32,96,0.6)",
+    "indentRainbow.updateDelay": 10,
+    "indentRainbow.indicatorStyle": "light",
+    "indentRainbow.lightIndicatorStyleLineWidth": 1,
+    "indentRainbow.excludedLanguages": [
+        "solidity",
+        "c",
+        "json",
+        "rust",
+        "assembly",
+        "asm",
+        "bytecode",
+        "byte"
+    ],
+    "cSpell.userWords": [
+        "bytedance",
+        "vuln"
+    ],
+    "markdown-preview-enhanced.alwaysShowBacklinksInPreview": true,
+    "markdown-preview-enhanced.frontMatterRenderingOption": "code block",
+    "markdown-preview-enhanced.previewTheme": "github-dark.css",
+    "editor.formatOnPaste": true,
+    "workbench.editor.tabSizing": "shrink",
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": true,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "explorer.confirmDelete": false,
+    "python.createEnvironment.trigger": "off",
+    "terminal.integrated.persistentSessionScrollback": 10000,
+    "terminal.integrated.scrollback": 10000,
+    "git.openRepositoryInParentFolders": "never",
+    "extensions.ignoreRecommendations": true,
+    "workbench.editor.enablePreview": false
 }
