@@ -1,0 +1,282 @@
+{
+    "filename": "GMMKPROANSI.profile1",
+    "exportVersion": 1,
+    "value": {
+        "metaData": {
+            "deviceId": "EK0xmOQciFe2ns5eraxac3iWYgY",
+            "deviceName": "GMMKPROANSI",
+            "coreVersion": "2.1.7",
+            "macroSourceId": "ph123",
+            "date": "7/6/2025, 1:52:44 AM"
+        },
+        "profile": {
+            "id": "wl4cB5wJ8qvvzFBOizic9lF_RmE",
+            "order": 0,
+            "layers": {
+                "0": {
+                    "order": 0,
+                    "pollingRate": 1000,
+                    "inputLatency": 2,
+                    "keybindingData": {
+                        "boundKeys": [
+                            {
+                                "componentIdentifier": "F9",
+                                "target": {
+                                    "bindingType": "Multimedia",
+                                    "optionType": "NextTrack"
+                                }
+                            },
+                            {
+                                "componentIdentifier": "F8",
+                                "target": {
+                                    "bindingType": "Multimedia",
+                                    "optionType": "PreviousTrack"
+                                }
+                            },
+                            {
+                                "componentIdentifier": "F4",
+                                "target": {
+                                    "bindingType": "Shortcuts",
+                                    "shortcutIdentifier": "LaunchProgram",
+                                    "target": {
+                                        "pathToExecutable": "C:\\Users\\tangr\\Desktop\\sleep.bat"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "HEProperties": {
+                        "actuationVisualisationEnabled": false,
+                        "actuationVisualisationValue": 0,
+                        "actuationIsGlobal": true,
+                        "globalActuationState": {
+                            "actuationPressValue": 2,
+                            "rapidTriggerEnabled": false,
+                            "rapidTriggerPressValue": 0.2,
+                            "rapidTriggerReleaseValue": 0.3
+                        },
+                        "perKeyAcutationStates": [],
+                        "actuationDeadzoneValue": 3.7,
+                        "keyBindings_dynamicKeystroke": [],
+                        "keyBindings_modTap": [],
+                        "keyBindings_toggle": []
+                    }
+                },
+                "1": {
+                    "order": 1,
+                    "pollingRate": 1000,
+                    "inputLatency": 16,
+                    "keybindingData": {
+                        "boundKeys": []
+                    },
+                    "HEProperties": {
+                        "actuationVisualisationEnabled": false,
+                        "actuationVisualisationValue": 0,
+                        "actuationIsGlobal": true,
+                        "globalActuationState": {
+                            "actuationPressValue": 2,
+                            "rapidTriggerEnabled": false,
+                            "rapidTriggerPressValue": 0.2,
+                            "rapidTriggerReleaseValue": 0.3
+                        },
+                        "perKeyAcutationStates": [],
+                        "actuationDeadzoneValue": 3.7,
+                        "keyBindings_dynamicKeystroke": [],
+                        "keyBindings_modTap": [],
+                        "keyBindings_toggle": []
+                    }
+                },
+                "2": {
+                    "order": 2,
+                    "pollingRate": 1000,
+                    "inputLatency": 16,
+                    "keybindingData": {
+                        "boundKeys": []
+                    },
+                    "HEProperties": {
+                        "actuationVisualisationEnabled": false,
+                        "actuationVisualisationValue": 0,
+                        "actuationIsGlobal": true,
+                        "globalActuationState": {
+                            "actuationPressValue": 2,
+                            "rapidTriggerEnabled": false,
+                            "rapidTriggerPressValue": 0.2,
+                            "rapidTriggerReleaseValue": 0.3
+                        },
+                        "perKeyAcutationStates": [],
+                        "actuationDeadzoneValue": 3.7,
+                        "keyBindings_dynamicKeystroke": [],
+                        "keyBindings_modTap": [],
+                        "keyBindings_toggle": []
+                    }
+                }
+            },
+            "activeLayerIndex": 0,
+            "presetLightingState": {
+                "effectIdentifier": "GloriousMode",
+                "colors": [
+                    {
+                        "red": 255,
+                        "green": 0,
+                        "blue": 0,
+                        "alpha": 100
+                    }
+                ],
+                "multicolorMode": true,
+                "speed": 50,
+                "brightness": 100,
+                "wirelessBrightness": 60,
+                "separateWiredAndWirelessBrightness": false
+            },
+            "perKeyLightingState": {
+                "brightness": 60,
+                "keyLightingStates": []
+            },
+            "zoneLightingState": {
+                "useZoneEffects": false,
+                "zone1effectIdentifier": "SeamlessBreathing",
+                "zone2effectIdentifier": "SeamlessBreathing",
+                "zone1colors": [
+                    {
+                        "red": 255,
+                        "green": 0,
+                        "blue": 0,
+                        "alpha": 100
+                    }
+                ],
+                "zone2colors": [
+                    {
+                        "red": 0,
+                        "green": 255,
+                        "blue": 0,
+                        "alpha": 100
+                    }
+                ],
+                "effectRate": 50,
+                "brightness": 100
+            },
+            "pickaxeZonesLightingState": {
+                "zones": {
+                    "zone1": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone2": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone3": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone4": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone5": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone6": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone7": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone8": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone9": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    },
+                    "zone10": {
+                        "effect": "SeamlessBreathing",
+                        "brightness": 100,
+                        "speed": 50,
+                        "direction": 0,
+                        "multicolorMode": true,
+                        "color": null
+                    }
+                }
+            },
+            "mousePerformanceState": {
+                "pollingrate": 1000,
+                "inputLatency": 16,
+                "LodValue": 1,
+                "DebounceValue": 10,
+                "DpiNum": 6,
+                "dpiSelectIndex": 2,
+                "DpiStage": [
+                    {
+                        "value": 400,
+                        "color": "#FFA40D"
+                    },
+                    {
+                        "value": 800,
+                        "color": "#26B4FF"
+                    },
+                    {
+                        "value": 1600,
+                        "color": "#FF2626",
+                        "isDefault": true
+                    },
+                    {
+                        "value": 3200,
+                        "color": "#18B30A"
+                    }
+                ],
+                "wirelessPollingRate": 1000,
+                "AdvancedDebounceSwitch": false,
+                "BeforePressValue": 0,
+                "BeforeReleaseValue": 0,
+                "AfterPressValue": 10,
+                "AfterReleaseValue": 10,
+                "LiftOffPressValue": 8,
+                "mechanicalDebounceTime": 0,
+                "opticalDebounceTime": 0,
+                "standby": 0
+            }
+        },
+        "macros": []
+    }
+}
