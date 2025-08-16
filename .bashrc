@@ -96,7 +96,7 @@ export color_prompt="yes"
 # Replacing the error mark with error code retrun by the program 
 export PROMPT_COMMAND=__prompt_command      # Func to gen PS1 after CMDs
 
-alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+export __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
 
 function __prompt_command(){
         local EXIT="$?"
@@ -272,3 +272,85 @@ function download(){
     fi
     yt-dlp $1 -x --audio-format mp3 --audio-quality 0 
 }
+
+# fzf install from git release page, also install fd and batcat and eza
+alias fd="fdfind "
+alias bat="batcat "
+alias fz="fzf"
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+# ------------FZF--------------
+# Set up fzf key bindings and fuzzy completion
+export FZF_DEFAULT_COMMAND="fdfind --hidden --strip-cwd-prefix --exclude .git "
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+
+# Setup fzf previews
+export FZF_CTRL_T_OPTS="--preview 'batcat --color=always -n --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+
+
+# Script to list recent files and open vim using fzf
+# set to an alias nlof in .zshrc
+
+function vv() {
+    # Define the vimtmp directory and file path
+    local vimtmp_dir=~/.vimtmp
+    
+    # Ensure the directory exists
+    if [[ ! -d "$vimtmp_dir" ]]; then
+        echo "The directory $vimtmp_dir does not exist."
+        return 1
+    fi
+
+    # List files in the vimtmp directory
+    local oldfiles=($(find "$vimtmp_dir" -type f))
+
+    # Debugging: Show what files were found
+    echo "Found the following files in $vimtmp_dir:"
+    for file in "${oldfiles[@]}"; do
+        echo "$file"
+    done
+
+    # Filter invalid paths or files not found
+    local valid_files=()
+    for file in "${oldfiles[@]}"; do
+        # Check if the file exists (not just its path)
+        if [[ -f "$file" ]]; then
+            valid_files+=("$file")
+        fi
+    done
+
+    # If no valid files were found
+    if [[ ${#valid_files[@]} -eq 0 ]]; then
+        echo "No recent files found."
+        return 1
+    fi
+
+    # Use fzf to select from valid files
+    local files=($(printf "%s\n" "${valid_files[@]}" | \
+        grep -v '\[.*' | \
+        fzf --multi \
+        --preview 'bat -n --color=always --line-range=:500 {} 2>/dev/null || echo "Error previewing file"' \
+        --height=70% \
+        --layout=default))
+
+    # Open selected files in vim
+    if [[ ${#files[@]} -gt 0 ]]; then
+        # Resolve real paths for each selected file
+        local real_files=()
+        for file in "${files[@]}"; do
+            file="${file/#$HOME\/.vimtmp\//}"
+            file="${file//%/\/}"
+            real_files+=("$file")
+        done
+        echo "Opening files: ${real_files[@]}"
+        vim "${real_files[@]}"
+    else
+        echo "No files selected."
+    fi
+}
+
