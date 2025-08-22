@@ -41,7 +41,7 @@ mkdir $HOME/.vimtmp
 mv $HOME/.vim/bundle_temp $HOME/.vim/bundle
 
 
-sudo apt install -y vim vim-gtk
+sudo apt install -y vim vim-gtk fzf fd-find eza
 sudo apt install -y tmux
 
 homebin="$HOME/bin"
