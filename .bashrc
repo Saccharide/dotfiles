@@ -99,11 +99,22 @@ export PROMPT_COMMAND=__prompt_command      # Func to gen PS1 after CMDs
 export __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
 
 function __prompt_command(){
+    prompt_color='\[\033[;94m\]'
+    info_color='\[\033[1;31m\]'
+    git_color='\[\033[;33m\]'
+    prompt_symbol=㉿
+
+    host_color='\[\033[01;31m\]'
+    user_color='\[\033[01;96m\]'
+    dir_color='\[\033[0;32m\]'
         local EXIT="$?"
                 if [ "$color_prompt" = yes ]; then
                     if [ -z "${VIRTUAL_ENV}" ] ; then
                     # change terminal title to be the current directory
-                        PS1="\[\e]0;\w\a\]\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]$(__git_ps1) $(date +%m/%d/%y\ %H:%M:%S)\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+                    PS1="\[\e]0;\w\a\]\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]$(__git_ps1) $(date +%m/%d/%y\ %H:%M:%S)\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+
+                    #PS1="\[\e]0;\w\a\]$prompt_color\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"$info_color[$EXIT$info_color]$prompt_color\342\224\200\")["$prompt_color'${debian_chroot:+($debian_chroot)──}${VIRTUAL_ENV:+(\[\033[0;1m\]$(basename $VIRTUAL_ENV)'$prompt_color')}'$user_color'\u'$prompt_color''$prompt_symbol''$host_color'\h'$prompt_color']-['$dir_color'\w'$prompt_color']'$git_color"$(__git_ps1) $prompt_color$(date +%m/%d/%y\ %H:%M:%S)"'\n'$prompt_color'└─'$prompt_color'\$\[\033[0m\] '
+ 
                     else
 
                         PS1="\[\e]0;\w\a\]\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[01;31m\]$EXIT\[\033[0;31m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]$(__git_ps1) ($(basename $VIRTUAL_ENV)) $(date +%m/%d/%y\ %H:%M:%S)\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
